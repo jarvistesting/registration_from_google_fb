@@ -21,18 +21,17 @@ class UserLogin extends Component {
             <Col lg="3" xs="3"></Col>
             <Col lg="6" xs="6">
                 <GoogleLogin
-                clientId={config.GOOGLE_CLIENT_ID}
-                buttonText="Login with google"
-                className="text-center google-class"
-                onSuccess={this.responseGoogle}
-                onFailure={this.onFailure}
-                />
+                  clientId={config.GOOGLE_CLIENT_ID}
+                  buttonText="Login with google"
+                  className="text-center google-class"
+                  onSuccess={this.responseGoogle}
+                  onFailure={this.onFailure} />
                 <FacebookLogin
-                appId={config.FACEBOOK_APP_ID}
-                autoLoad={false}
-                fields="name,email,picture"
-                cssClass="text-center facebook-class"
-                callback={this.responseFacebook} />
+                  appId={config.FACEBOOK_APP_ID}
+                  autoLoad={false}
+                  fields="name,email,picture"
+                  cssClass="text-center facebook-class"
+                  callback={this.responseFacebook} />
             </Col>
         </Row>
     );

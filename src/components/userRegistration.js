@@ -17,23 +17,30 @@ class UserRegistration extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    var users;
+    let users;
     if (!localStorage.users) { 
-      users = {}; 
+        users = {}; 
     } else {
         users = JSON.parse(localStorage.users);
     }
-    var jsondata = {
+    let jsondata = {
       name : event.target.username.value,
       email : event.target.useremail.value
     }
     users[event.target.useremail.value] = jsondata;
-    localStorage.users = JSON.stringify(users); 
+    localStorage.users = JSON.stringify(users);
+    let parsedData = JSON.parse(localStorage.users);
+    parsedData = Object.values(parsedData);
+    this.setState({
+      showNoData : false,
+      showData : true,
+      localStorageData : parsedData
+    });
   }
 
   handleGetData = () => {
-    var userData = localStorage.getItem('users');
-    var parsedData = JSON.parse(userData);
+    let userData = localStorage.getItem('users'),
+    parsedData = JSON.parse(userData);
     if (parsedData) {
       parsedData = Object.values(parsedData);
       this.setState({
@@ -53,7 +60,8 @@ class UserRegistration extends Component {
     localStorage.clear();
     this.setState ({
       showNoData : true,
-      showData : false
+      showData : false,
+      localStorageData : []
     })
   } 
 
